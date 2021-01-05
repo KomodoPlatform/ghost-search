@@ -1,9 +1,9 @@
 /**
  * ghost-search 1.1.0 (https://github.com/HauntedThemes/ghost-search)
  * A simple but powerful search library for Ghost Blogging Platform.
- * Copyright 2019 Haunted Themes (https://www.hauntedthemes.com)
+ * Copyright 2021 Haunted Themes (https://www.hauntedthemes.com)
  * Released under MIT License
- * Released on: 15 Nov 2019
+ * Released on: 5 Jan 2021
  */
 
 /*
@@ -611,7 +611,7 @@ return fuzzysortNew()
 
 // TODO: (performance) i have no idea how well optizmied the allowing typos algorithm is
 
-'use strict';
+"use strict";
 /**
  * @requires ../node_modules/fuzzysort/fuzzysort.js
  */
@@ -634,34 +634,34 @@ function () {
 
     this.check = false;
     var defaults = {
-      url: '',
-      key: '',
-      version: 'v3',
-      input: '#ghost-search-field',
-      results: '#ghost-search-results',
-      button: '',
-      defaultValue: '',
+      url: "",
+      key: "",
+      version: "v3",
+      input: "#ghost-search-field",
+      results: "#ghost-search-results",
+      button: "",
+      defaultValue: "",
       template: function template(result) {
-        var url = [location.protocol, '//', location.url].join('');
-        return '<a href="' + url + '/' + result.slug + '/">' + result.title + '</a>';
+        //let url = [location.protocol, "//", location.url].join("");
+        return '<a href="' + this.url + "/" + result.slug + '/">' + result.title + "</a>";
       },
-      trigger: 'focus',
+      trigger: "focus",
       options: {
-        keys: ['title'],
+        keys: ["title"],
         limit: 10,
         threshold: -3500,
         allowTypo: false
       },
       api: {
-        resource: 'posts',
+        resource: "posts",
         parameters: {
-          limit: 'all',
-          fields: ['title', 'slug'],
-          filter: '',
-          include: '',
-          order: '',
-          formats: '',
-          page: ''
+          limit: "all",
+          fields: ["title", "slug"],
+          filter: "",
+          include: "",
+          order: "",
+          formats: "",
+          page: ""
         }
       },
       on: {
@@ -681,9 +681,9 @@ function () {
     value: function mergeDeep(target, source) {
       var _this = this;
 
-      if (target && _typeof(target) === 'object' && !Array.isArray(target) && target !== null && source && _typeof(source) === 'object' && !Array.isArray(source) && source !== null) {
+      if (target && _typeof(target) === "object" && !Array.isArray(target) && target !== null && source && _typeof(source) === "object" && !Array.isArray(source) && source !== null) {
         Object.keys(source).forEach(function (key) {
-          if (source[key] && _typeof(source[key]) === 'object' && !Array.isArray(source[key]) && source[key] !== null) {
+          if (source[key] && _typeof(source[key]) === "object" && !Array.isArray(source[key]) && source[key] !== null) {
             if (!target[key]) Object.assign(target, _defineProperty({}, key, {}));
 
             _this.mergeDeep(target[key], source[key]);
@@ -710,7 +710,7 @@ function () {
       var parameters = this.api.parameters;
 
       for (var key in parameters) {
-        if (parameters[key] != '') {
+        if (parameters[key] != "") {
           browse[key] = parameters[key];
         }
       }
@@ -724,23 +724,22 @@ function () {
   }, {
     key: "createElementFromHTML",
     value: function createElementFromHTML(htmlString) {
-      var div = document.createElement('div');
+      var div = document.createElement("div");
       div.innerHTML = htmlString.trim();
       return div.firstChild;
     }
   }, {
     key: "displayResults",
     value: function displayResults(data) {
-      if (document.querySelectorAll(this.results)[0].firstChild !== null && document.querySelectorAll(this.results)[0].firstChild !== '') {
+      if (document.querySelectorAll(this.results)[0].firstChild !== null && document.querySelectorAll(this.results)[0].firstChild !== "") {
         while (document.querySelectorAll(this.results)[0].firstChild) {
           document.querySelectorAll(this.results)[0].removeChild(document.querySelectorAll(this.results)[0].firstChild);
         }
       }
 
-      ;
       var inputValue = document.querySelectorAll(this.input)[0].value;
 
-      if (this.defaultValue != '') {
+      if (this.defaultValue != "") {
         inputValue = this.defaultValue;
       }
 
@@ -755,12 +754,10 @@ function () {
         if (key < results.length) {
           document.querySelectorAll(this.results)[0].appendChild(this.createElementFromHTML(this.template(results[key].obj)));
         }
-
-        ;
       }
 
       this.on.afterDisplay(results);
-      this.defaultValue = '';
+      this.defaultValue = "";
     }
   }, {
     key: "search",
@@ -770,22 +767,21 @@ function () {
       this.on.afterFetch(data);
       this.check = true;
 
-      if (this.defaultValue != '') {
+      if (this.defaultValue != "") {
         this.on.beforeDisplay();
         this.displayResults(data);
       }
 
-      if (this.button != '') {
+      if (this.button != "") {
         var button = document.querySelectorAll(this.button)[0];
 
-        if (button.tagName == 'INPUT' && button.type == 'submit') {
-          button.closest('form').addEventListener("submit", function (e) {
+        if (button.tagName == "INPUT" && button.type == "submit") {
+          button.closest("form").addEventListener("submit", function (e) {
             e.preventDefault();
           });
         }
 
-        ;
-        button.addEventListener('click', function (e) {
+        button.addEventListener("click", function (e) {
           e.preventDefault();
 
           _this3.on.beforeDisplay();
@@ -793,52 +789,43 @@ function () {
           _this3.displayResults(data);
         });
       } else {
-        document.querySelectorAll(this.input)[0].addEventListener('keyup', function (e) {
+        document.querySelectorAll(this.input)[0].addEventListener("keyup", function (e) {
           _this3.on.beforeDisplay();
 
           _this3.displayResults(data);
         });
       }
-
-      ;
     }
   }, {
     key: "checkArgs",
     value: function checkArgs() {
       if (!document.querySelectorAll(this.input).length) {
-        console.log('Input not found.');
+        console.log("Input not found.");
         return false;
       }
 
       if (!document.querySelectorAll(this.results).length) {
-        console.log('Results not found.');
+        console.log("Results not found.");
         return false;
       }
 
-      ;
-
-      if (this.button != '') {
+      if (this.button != "") {
         if (!document.querySelectorAll(this.button).length) {
-          console.log('Button not found.');
+          console.log("Button not found.");
           return false;
         }
-
-        ;
       }
 
-      if (this.url == '') {
-        console.log('Content API Client Library host missing. Please set the host. Must not end in a trailing slash.');
+      if (this.url == "") {
+        console.log("Content API Client Library host missing. Please set the host. Must not end in a trailing slash.");
         return false;
       }
 
-      ;
-
-      if (this.key == '') {
+      if (this.key == "") {
         console.log('Content API Client Library key missing. Please set the key. Hex string copied from the "Integrations" screen in Ghost Admin.');
         return false;
       }
 
-      ;
       return true;
     }
   }, {
@@ -848,7 +835,6 @@ function () {
         return false;
       }
 
-      ;
       return true;
     }
   }, {
@@ -860,33 +846,27 @@ function () {
         return;
       }
 
-      if (this.defaultValue != '') {
+      if (this.defaultValue != "") {
         document.querySelectorAll(this.input)[0].value = this.defaultValue;
 
         window.onload = function () {
           if (!_this4.check) {
             _this4.fetch();
           }
-
-          ;
         };
       }
 
-      if (this.trigger == 'focus') {
-        document.querySelectorAll(this.input)[0].addEventListener('focus', function (e) {
+      if (this.trigger == "focus") {
+        document.querySelectorAll(this.input)[0].addEventListener("focus", function (e) {
           if (!_this4.check) {
             _this4.fetch();
           }
-
-          ;
         });
-      } else if (this.trigger == 'load') {
+      } else if (this.trigger == "load") {
         window.onload = function () {
           if (!_this4.check) {
             _this4.fetch();
           }
-
-          ;
         };
       }
     }
