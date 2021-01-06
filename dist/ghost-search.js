@@ -633,6 +633,7 @@ function () {
     _classCallCheck(this, GhostSearch);
 
     this.check = false;
+    var url = this.url;
     var defaults = {
       url: "",
       key: "",
@@ -643,9 +644,7 @@ function () {
       defaultValue: "",
       template: function template(result) {
         //let url = [location.protocol, "//", location.url].join("");
-        console.log('html:   <a href="' + this.url + "/" + result.slug + '/">' + result.title + "</a>");
-        console.log("this.url:" + this.url);
-        return '<a href="' + this.url + "/" + result.slug + '/">' + result.title + "</a>";
+        return '<a href="' + url + "/" + result.slug + '/">' + result.title + "</a>";
       },
       trigger: "focus",
       options: {
