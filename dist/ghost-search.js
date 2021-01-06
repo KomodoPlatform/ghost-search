@@ -3,7 +3,7 @@
  * A simple but powerful search library for Ghost Blogging Platform.
  * Copyright 2021 Haunted Themes (https://www.hauntedthemes.com)
  * Released under MIT License
- * Released on: 5 Jan 2021
+ * Released on: 6 Jan 2021
  */
 
 /*
@@ -643,6 +643,8 @@ function () {
       defaultValue: "",
       template: function template(result) {
         //let url = [location.protocol, "//", location.url].join("");
+        console.log('html:   <a href="' + this.url + "/" + result.slug + '/">' + result.title + "</a>");
+        console.log("this.url:" + this.url);
         return '<a href="' + this.url + "/" + result.slug + '/">' + result.title + "</a>";
       },
       trigger: "focus",

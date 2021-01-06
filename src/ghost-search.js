@@ -18,6 +18,17 @@ class GhostSearch {
       defaultValue: "",
       template: function (result) {
         //let url = [location.protocol, "//", location.url].join("");
+        console.log(
+          'html:   <a href="' +
+            this.url +
+            "/" +
+            result.slug +
+            '/">' +
+            result.title +
+            "</a>"
+        );
+        console.log("this.url:" + this.url);
+
         return (
           '<a href="' +
           this.url +
