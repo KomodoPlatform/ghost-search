@@ -7,7 +7,6 @@
 class GhostSearch {
   constructor(args) {
     this.check = false;
-    let url = this.url;
     const defaults = {
       url: "",
       key: "",
@@ -19,7 +18,15 @@ class GhostSearch {
       template: function (result) {
         //let url = [location.protocol, "//", location.url].join("");
         return (
-          '<a href="' + url + "/" + result.slug + '/">' + result.title + "</a>"
+          '<a href="' +
+          url +
+          "/" +
+          document.documentElement.lang +
+          "/" +
+          result.slug +
+          '/">' +
+          result.title +
+          "</a>"
         );
       },
       trigger: "focus",
