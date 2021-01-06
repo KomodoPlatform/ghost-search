@@ -1,7 +1,7 @@
 [![Min Ghost Version](https://img.shields.io/badge/Min%20Ghost%20v.-%3E%3D%203.0.0-blue.svg)](https://github.com/TryGhost/Ghost)
 [![npm version](https://badge.fury.io/js/ghost-search.svg)](https://www.npmjs.com/package/ghost-search)
 
-# ghost-search
+# ghost-search (ARCHIVED as it is no longer necessary)
 
 A simple but powerful search library for [Ghost Blogging Platform](https://ghost.org/).
 
